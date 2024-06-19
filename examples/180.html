@@ -22,7 +22,23 @@
       player.mediainfo.projection = '180';
 
       var vr = window.vr = player.vr({projection: '180', debug: true, forceCardboard: false});
-    }(window, window.videojs));
-  </script>
+
+    const videoElement = document.getElementById('videojs-vr-player');
+    const videoSourceParam = window.location.search.substring(1);
+
+    if (videoSourceParam) {
+
+      player.src({
+        type: 'application/dash+xml',
+        src: videoSourceParam
+      });
+      console.log("KJSL: opening " + videoSourceParam);
+    } else {
+      document.write('No video source provided in the query string e.g. add ?https://foo/manifest.mpd to the address above');
+    }
+  }(window, window.videojs));
+
+
+</script>
 </body>
 </html>
