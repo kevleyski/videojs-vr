@@ -16,6 +16,7 @@ import WebXRPolyfill from 'webxr-polyfill';
 import {VRButton} from '../vendor/three/VRButton.js';
 import {XRControllerModelFactory} from '../node_modules/three/examples/jsm/webxr/XRControllerModelFactory';
 import {BoxLineGeometry} from '../node_modules/three/examples/jsm/geometries/BoxLineGeometry';
+import WebXRLayersPolyfill from 'webxr-layers-polyfill';
 
 // import controls so they get registered with videojs
 import './cardboard-button';
@@ -83,6 +84,7 @@ class VR extends Plugin {
     }
 
     this.polyfill_ = new WebXRPolyfill();
+    this.polyfillLayers_ = new WebXRLayersPolyfill();
 
     this.handleVrDisplayActivate_ = videojs.bind(this, this.handleVrDisplayActivate_);
     this.handleVrDisplayDeactivate_ = videojs.bind(this, this.handleVrDisplayDeactivate_);
@@ -116,7 +118,7 @@ class VR extends Plugin {
       projection = 'NONE';
     }
 
-    const position = {x: 0, y: 0, z: 0 };
+    const position = {x: 0, y: 0, z: 0};
 
     if (this.scene) {
       this.scene.remove(this.movieScreen);
@@ -132,7 +134,7 @@ class VR extends Plugin {
       return this.changeProjection_('NONE');
     } else if (projection === '360') {
       this.movieGeometry = new THREE.SphereBufferGeometry(this.options_.sphereRadius, this.options_.sphereDetail, this.options_.sphereDetail);
-      this.movieMaterial = new THREE.MeshBasicMaterial({ map: this.videoTexture, side: THREE.BackSide });
+      this.movieMaterial = new THREE.MeshBasicMaterial({map: this.videoTexture, side: THREE.BackSide});
 
       this.movieScreen = new THREE.Mesh(this.movieGeometry, this.movieMaterial);
       this.movieScreen.position.set(position.x, position.y, position.z);
@@ -165,7 +167,7 @@ class VR extends Plugin {
         }
       }
 
-      this.movieMaterial = new THREE.MeshBasicMaterial({ map: this.videoTexture, side: THREE.BackSide });
+      this.movieMaterial = new THREE.MeshBasicMaterial({map: this.videoTexture, side: THREE.BackSide});
 
       this.movieScreen = new THREE.Mesh(this.movieGeometry, this.movieMaterial);
       this.movieScreen.scale.x = -1;
@@ -197,7 +199,7 @@ class VR extends Plugin {
         }
       }
 
-      this.movieMaterial = new THREE.MeshBasicMaterial({ map: this.videoTexture, side: THREE.BackSide });
+      this.movieMaterial = new THREE.MeshBasicMaterial({map: this.videoTexture, side: THREE.BackSide});
 
       this.movieScreen = new THREE.Mesh(this.movieGeometry, this.movieMaterial);
       this.movieScreen.scale.x = -1;
@@ -207,7 +209,7 @@ class VR extends Plugin {
       this.scene.add(this.movieScreen);
     } else if (projection === '360_CUBE') {
       this.movieGeometry = new THREE.BoxBufferGeometry(256, 256, 256);
-      this.movieMaterial = new THREE.MeshBasicMaterial({ map: this.videoTexture, side: THREE.BackSide });
+      this.movieMaterial = new THREE.MeshBasicMaterial({map: this.videoTexture, side: THREE.BackSide});
 
       const uvs = this.movieGeometry.getAttribute('uv');
 
@@ -216,7 +218,7 @@ class VR extends Plugin {
       const top = [new THREE.Vector2(1, 1), new THREE.Vector2(2.0 / 3.0, 1), new THREE.Vector2(2.0 / 3.0, 1.0 / 2.0), new THREE.Vector2(1, 1.0 / 2.0)];
       const bottom = [new THREE.Vector2(0, 0), new THREE.Vector2(1.0 / 3.0, 0), new THREE.Vector2(1.0 / 3.0, 1.0 / 2.0), new THREE.Vector2(0, 1.0 / 2.0)];
       const back = [new THREE.Vector2(2.0 / 3.0, 0), new THREE.Vector2(2.0 / 3.0, 1.0 / 2.0), new THREE.Vector2(1.0 / 3.0, 1.0 / 2.0), new THREE.Vector2(1.0 / 3.0, 0)];
-      const left = [new THREE.Vector2(1, 0), new THREE.Vector2(1, 1.0 / 2.0), new THREE.Vector2(2.0 / 3.0, 1.0 / 2.0), new THREE.Vector2(2.0 / 3.0, 0) ];
+      const left = [new THREE.Vector2(1, 0), new THREE.Vector2(1, 1.0 / 2.0), new THREE.Vector2(2.0 / 3.0, 1.0 / 2.0), new THREE.Vector2(2.0 / 3.0, 0)];
 
       // LEFT
       uvs.setXY(0, left[2].x, left[2].y);
@@ -495,7 +497,7 @@ void main() {
     // if we have videojs-errors use it
     if (this.videojsErrorsSupport_) {
       this.player_.error(errorObj);
-    // if we don't have videojs-errors just use a normal player error
+      // if we don't have videojs-errors just use a normal player error
     } else {
       // strip any html content from the error message
       // as it is not supported outside of videojs-errors
@@ -740,8 +742,8 @@ void main() {
 
     // mobile devices, or cardboard forced to on
     if (this.options_.forceCardboard ||
-        videojs.browser.IS_ANDROID ||
-        videojs.browser.IS_IOS) {
+      videojs.browser.IS_ANDROID ||
+      videojs.browser.IS_IOS) {
       this.addCardboardButton_();
     }
 
@@ -1012,7 +1014,15 @@ void main() {
     ];
 
     let phia = 0;
-    let phib; let xc; let yc; let uc; let vc; let cosa; let sina; let cosb; let sinb;
+    let phib;
+    let xc;
+    let yc;
+    let uc;
+    let vc;
+    let cosa;
+    let sina;
+    let cosb;
+    let sinb;
 
     for (let i = 0; i < sectors * 4; i++) {
       phib = Math.PI * 2 * (i + 1) / (4 * sectors);
@@ -1040,7 +1050,7 @@ void main() {
   makeButtonMesh(x, y, z, color) {
 
     const geometry = new THREE.BoxGeometry(x, y, z);
-    const material = new THREE.MeshPhongMaterial({ color });
+    const material = new THREE.MeshPhongMaterial({color});
     const buttonMesh = new THREE.Mesh(geometry, material);
 
     buttonMesh.castShadow = true;
@@ -1060,7 +1070,7 @@ void main() {
 
     const controlsGeometry = new this.RoundedRectangle(2.4, 0.6, 0.05, 5.0);
 
-    this.controls = new THREE.Mesh(controlsGeometry, new THREE.MeshLambertMaterial({ color: 0x000000 }));
+    this.controls = new THREE.Mesh(controlsGeometry, new THREE.MeshLambertMaterial({color: 0x000000}));
     this.controls.position.x = -0.0;
     this.controls.position.y = -1.0;
     this.controls.position.z = -3.0;
@@ -1074,7 +1084,11 @@ void main() {
     const textureExitImmersive = new THREE.TextureLoader().load('img/controls_exitimmersive.png');
 
     textureExitImmersive.repeat.set(1, 1);
-    this.buttonExit = new THREE.Mesh(buttonGeometry, new THREE.MeshLambertMaterial({ map: textureExitImmersive, color: 0xffffff, side: THREE.DoubleSide}));
+    this.buttonExit = new THREE.Mesh(buttonGeometry, new THREE.MeshLambertMaterial({
+      map: textureExitImmersive,
+      color: 0xffffff,
+      side: THREE.DoubleSide
+    }));
     this.buttonExit.position.x = -0.8;
     this.buttonExit.position.z = 0.1;
     this.buttonExit.buttonid = 'exit';
@@ -1084,7 +1098,11 @@ void main() {
     const textureBack10 = new THREE.TextureLoader().load('img/controls_back10.png');
 
     textureBack10.repeat.set(1, 1);
-    this.buttonBack10 = new THREE.Mesh(buttonGeometry, new THREE.MeshLambertMaterial({ map: textureBack10, color: 0xffffff, side: THREE.DoubleSide}));
+    this.buttonBack10 = new THREE.Mesh(buttonGeometry, new THREE.MeshLambertMaterial({
+      map: textureBack10,
+      color: 0xffffff,
+      side: THREE.DoubleSide
+    }));
     this.buttonBack10.position.x = -0.1;
     this.buttonBack10.position.z = 0.1;
     this.buttonBack10.buttonid = 'back10';
@@ -1094,7 +1112,11 @@ void main() {
     const texturePlayPause = new THREE.TextureLoader().load('img/controls_pause.png');
 
     texturePlayPause.repeat.set(1, 1);
-    this.buttonPlayPause = new THREE.Mesh(buttonGeometry, new THREE.MeshLambertMaterial({ map: texturePlayPause, color: 0xffffff, side: THREE.DoubleSide}));
+    this.buttonPlayPause = new THREE.Mesh(buttonGeometry, new THREE.MeshLambertMaterial({
+      map: texturePlayPause,
+      color: 0xffffff,
+      side: THREE.DoubleSide
+    }));
     this.buttonPlayPause.position.x = 0.4;
     this.buttonPlayPause.position.z = 0.1;
     this.buttonPlayPause.buttonid = 'playpause';
@@ -1104,7 +1126,11 @@ void main() {
     const textureForward10 = new THREE.TextureLoader().load('img/controls_forward10.png');
 
     textureForward10.repeat.set(1, 1);
-    this.buttonForward10 = new THREE.Mesh(buttonGeometry, new THREE.MeshLambertMaterial({ map: textureForward10, color: 0xffffff, side: THREE.DoubleSide}));
+    this.buttonForward10 = new THREE.Mesh(buttonGeometry, new THREE.MeshLambertMaterial({
+      map: textureForward10,
+      color: 0xffffff,
+      side: THREE.DoubleSide
+    }));
     this.buttonForward10.position.x = 0.9;
     this.buttonForward10.position.z = 0.1;
     this.buttonForward10.buttonid = 'forward10';
@@ -1168,7 +1194,7 @@ void main() {
   initImmersiveVR() {
     this.renderer.xr.enabled = true;
     this.renderer.xr.setReferenceSpaceType('local');
-    this.renderer.setPixelRatio(window.devicePixelRatio);
+    //   this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setAnimationLoop(this.render.bind(this));
 
     this.raycaster = new THREE.Raycaster();
@@ -1226,6 +1252,10 @@ void main() {
   }
 
   render() {
+    if (this.player_.isUsingLayers) {
+      return;
+    }
+
     if (this.controllers) {
       const self = this;
 
