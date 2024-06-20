@@ -23,9 +23,9 @@
 
     // AUTO is the default and looks at mediainfo
     var vr = window.vr = player.vr({projection: 'AUTO', debug: true, forceCardboard: false});
-
+    
     const videoSourceParam = window.location.search.substring(1);
-    if (videoSourceParam && videoSourceParam.startsWith("http")) {
+    if (videoSourceParam) {
       if (videoSourceParam.indexOf(".mpd") !== -1) {
         player.src({
           type: 'application/dash+xml',
@@ -47,3 +47,4 @@
 </script>
 </body>
 </html>
+
