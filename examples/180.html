@@ -7,7 +7,7 @@
   <link href="../dist/videojs-vr.css" rel="stylesheet">
 </head>
 <body>
-  <video width="640" height="640" id="videojs-vr-player" class="video-js vjs-default-skin" controls playsinline>
+<video width="640" height="640" id="videojs-vr-player" class="video-js vjs-default-skin" controls playsinline>
   <source src="../samples/video_180.mp4" type="video/mp4">
 </video>
 <ul>
@@ -42,7 +42,11 @@
         });
       }
     }
-  }(window, window.videojs));
+    (window, window.videojs)
+  )
+    ;
+
+
 </script>
 </body>
 </html>
