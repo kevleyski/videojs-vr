@@ -5,8 +5,27 @@
   <title>videojs-vr Demo</title>
   <link href="../node_modules/video.js/dist/video-js.css" rel="stylesheet">
   <link href="../dist/videojs-vr.css" rel="stylesheet">
+  <script>
+    function switchMonoStereoscope() {
+      let swappedURL = window.location.href;
+      if (swappedURL.indexOf("180.html") >= 0)
+      {
+        swappedURL = swappedURL.replace("180.html", "180-mono.html");
+      } else {
+        swappedURL = swappedURL.replace("180-mono.html", "180.html");
+      }
+      if (swappedURL.indexOf("360.html") >= 0)
+      {
+        swappedURL = swappedURL.replace("360.html", "360-mono.html");
+      } else {
+        swappedURL = swappedURL.replace("360-mono.html", "360.html");
+      }
+      window.location.href = swappedURL;
+    }
+  </script>
 </head>
 <body>
+<a href="javascript:switchMonoStereoscope()">switch to monoscopic</a>
 <video width="640" height="640" id="videojs-vr-player" class="video-js vjs-default-skin" controls playsinline>
   <source src="../samples/video_180.mp4" type="video/mp4">
 </video>
