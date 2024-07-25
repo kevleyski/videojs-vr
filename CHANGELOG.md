@@ -1,3 +1,22 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/videojs/videojs-vr/compare/v1.10.1...v2.0.0) (2024-07-22)
+
+### Chores
+
+* revisting clean exit immersive and 180 projection
+
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/videojs/videojs-vr/compare/v1.10.1...v2.0.0) (2023-02-15)
+
+### Chores
+
+* update build tooling to drop older browser support ([#276](https://github.com/videojs/videojs-vr/issues/276)) ([0947a0f](https://github.com/videojs/videojs-vr/commit/0947a0f))
+
+
+### BREAKING CHANGES
+
+* This drops support for older browsers such as IE
+
 <a name="1.10.1"></a>
 ## [1.10.1](https://github.com/videojs/videojs-vr/compare/v1.10.0...v1.10.1) (2022-08-16)
 
@@ -125,7 +144,7 @@
 ### Chores
 
 * update to generator-videojs-plugin[@7](https://github.com/7).2.0 ([634be2b](https://github.com/videojs/videojs-vr/commit/634be2b))
-* **package:** update videojs-generate-rollup-config to version 2.2.0 🚀 ([#135](https://github.com/videojs/videojs-vr/issues/135)) ([d42d1f2](https://github.com/videojs/videojs-vr/commit/d42d1f2))
+* **package:** update videojs-generate-rollup-config to version 2.2.0 🚀 ([#135]https://github.com/videojs/videojs-vr/issues/135)) ([d42d1f2](https://github.com/videojs/videojs-vr/commit/d42d1f2))
 
 <a name="1.4.7"></a>
 ## [1.4.7](https://github.com/videojs/videojs-vr/compare/v1.4.6...v1.4.7) (2018-08-23)
