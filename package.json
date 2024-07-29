@@ -99,6 +99,7 @@
     "rollup": "2.42.0",
     "rollup-plugin-re": "^1.0.7",
     "sass": "^1.34.1",
+    "shx": "^0.3.4",
     "sinon": "^7.2.2",
     "videojs-generate-karma-config": "~8.1.0",
     "videojs-generate-rollup-config": "7.0.0",
@@ -106,10 +107,6 @@
     "videojs-languages": "^2.0.0",
     "videojs-standard": "^9.1.0"
   },
-  "browserslist": [
-    "defaults",
-    "ie 11"
-  ],
   "lint-staged": {
     "*.js": "vjsstandard --fix",
     "README.md": "doctoc --notitle"
