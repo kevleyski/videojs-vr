@@ -42,10 +42,7 @@ class DeviceOrientationControls extends EventDispatcher {
     this.alphaOffset = 0; // radians
 
     const onDeviceOrientationChangeEvent = function (event) {
-      const kevdebug = document.getElementById('kevdebug');
-      if (kevdebug) {
-        kevdebug.innerHTML = `KEVS pitch=${parseInt(event.alpha, 10)} roll=${parseInt(event.beta, 10)} yaw=${parseInt(event.gamma, 10)}`;
-      }
+
       scope.deviceOrientation = event;
     };
 
@@ -127,13 +124,13 @@ class DeviceOrientationControls extends EventDispatcher {
 
         const orient = scope.screenOrientation ? MathUtils.degToRad( scope.screenOrientation ) : 0; // O
 
-        setObjectQuaternion( scope.object.quaternion, alpha, beta, gamma, orient );
-
-        if ( 8 * ( 1 - lastQuaternion.dot( scope.object.quaternion ) ) > EPS ) {
-
-          lastQuaternion.copy( scope.object.quaternion );
-          scope.dispatchEvent( _changeEvent );
-          return true;
+        if (alpha !== 0 && beta !== 0 && gamma !== 0) {
+          setObjectQuaternion(scope.object.quaternion, alpha, beta, gamma, orient);
+          if (8 * (1 - lastQuaternion.dot(scope.object.quaternion)) > EPS) {
+            lastQuaternion.copy(scope.object.quaternion);
+            scope.dispatchEvent(_changeEvent);
+            return true;
+          }
         }
 
       }
