@@ -41,18 +41,12 @@ class DeviceOrientationControls extends EventDispatcher {
 
     this.alphaOffset = 0; // radians
 
-    const onDeviceOrientationChangeEvent = function (pitch, roll, yaw) {
-
+    const onDeviceOrientationChangeEvent = function (event) {
       const kevdebug = document.getElementById('kevdebug');
-      kevdebug.innerHTML = `KEVS pitch=${parseInt(pitch, 10)} roll=${parseInt(roll, 10)} yaw=${parseInt(yaw, 10)}`;
-
-      // Kevs quick hack
-      scope.deviceOrientation.alpha = pitch;
-      scope.deviceOrientation.beta = roll;
-      scope.deviceOrientation.gamma = yaw;
-
-//      scope.deviceOrientation = event;
-
+      if (kevdebug) {
+        kevdebug.innerHTML = `KEVS pitch=${parseInt(event.alpha, 10)} roll=${parseInt(event.beta, 10)} yaw=${parseInt(event.gamma, 10)}`;
+      }
+      scope.deviceOrientation = event;
     };
 
     const onScreenOrientationChangeEvent = function () {
@@ -88,10 +82,7 @@ class DeviceOrientationControls extends EventDispatcher {
           if ( response == 'granted' ) {
 
             window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent );
-            window.addEventListener( 'deviceorientation', (event) => {
-              onDeviceOrientationChangeEvent(event.beta, event.gamma, event.alpha);
-            });
-
+            window.addEventListener( 'deviceorientation', onDeviceOrientationChangeEvent );
           }
 
         } ).catch( function ( error ) {

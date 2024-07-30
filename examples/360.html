@@ -7,6 +7,7 @@
   <link href="../dist/videojs-vr.css" rel="stylesheet">
 </head>
 <body>
+<div id="kevdebug"></div>
 <video width="640" height="640" id="videojs-vr-player" class="video-js vjs-default-skin" controls playsinline>
   <source src="../samples/eagle-360.mp4" type="video/mp4">
 </video>
@@ -23,7 +24,7 @@
 
     // AUTO is the default and looks at mediainfo
     var vr = window.vr = player.vr({projection: 'AUTO', debug: true, forceCardboard: false});
-    
+
     const videoSourceParam = window.location.search.substring(1);
     if (videoSourceParam) {
       if (videoSourceParam.indexOf(".mpd") !== -1) {
