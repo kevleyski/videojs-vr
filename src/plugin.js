@@ -612,7 +612,7 @@ void main() {
     }
 
     // WebXR has animation loop but if that's not available we simulate that instead
-    if (this.webVREffect) {
+    if (this.webVREffect && this.webVREffect.isPresenting) {
       this.webVREffect.render(this.scene, this.camera);
     }
 
@@ -651,6 +651,15 @@ void main() {
     this.animationFrameId_ = this.requestAnimationFrame(this.animate_);
     if (this.orbitcontrols.update()) {
       this.renderer.render(this.scene, this.camera);
+      if (this.webVREffect) {
+        this.webVREffect.isPresenting = false;
+      }
+    } else if (this.webVREffect) {
+      // this.controls3d.orbit.target.setX(this.camera.quaternion.x);
+      // this.controls3d.orbit.target.setY(this.camera.quaternion.y);
+      // this.controls3d.orbit.target.setZ(this.camera.quaternion.z);
+      this.controls3d.orbit.update();
+      this.webVREffect.isPresenting = true;
     }
   }
 
