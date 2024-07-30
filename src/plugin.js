@@ -649,6 +649,7 @@ void main() {
     }
 
     this.animationFrameId_ = this.requestAnimationFrame(this.animate_);
+    this.orbitcontrols.update();
   }
 
   handleResize_() {
