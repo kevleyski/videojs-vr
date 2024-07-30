@@ -1,5 +1,12 @@
+<a name="2.1.1"></a>
+# [2.1.1](https://github.com/videojs/videojs-vr/compare/v1.10.1...v2.1.1) (2024-07-22)
+
+### Chores
+
+* revisting iPhone
+
 <a name="2.1.0"></a>
-# [2.1.0](https://github.com/videojs/videojs-vr/compare/v1.10.1...v2.0.0) (2024-07-22)
+# [2.1.0](https://github.com/videojs/videojs-vr/compare/v1.10.1...v2.1.0) (2024-07-22)
 
 ### Chores
 
@@ -144,7 +151,7 @@
 ### Chores
 
 * update to generator-videojs-plugin[@7](https://github.com/7).2.0 ([634be2b](https://github.com/videojs/videojs-vr/commit/634be2b))
-* **package:** update videojs-generate-rollup-config to version 2.2.0 🚀 ([#135]https://github.com/videojs/videojs-vr/issues/135)) ([d42d1f2](https://github.com/videojs/videojs-vr/commit/d42d1f2))
+* **package:** update videojs-generate-rollup-config to version 2.2.0 🚀 ([#135](https://github.com/videojs/videojs-vr/issues/135)) ([d42d1f2](https://github.com/videojs/videojs-vr/commit/d42d1f2))
 
 <a name="1.4.7"></a>
 ## [1.4.7](https://github.com/videojs/videojs-vr/compare/v1.4.6...v1.4.7) (2018-08-23)
