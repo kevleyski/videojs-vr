@@ -133,10 +133,12 @@ class DeviceOrientationControls extends EventDispatcher {
 
           lastQuaternion.copy( scope.object.quaternion );
           scope.dispatchEvent( _changeEvent );
-
+          return true;
         }
 
       }
+
+      return false;
 
     };
 

@@ -649,7 +649,9 @@ void main() {
     }
 
     this.animationFrameId_ = this.requestAnimationFrame(this.animate_);
-    this.orbitcontrols.update();
+    if (this.orbitcontrols.update()) {
+      this.renderer.render(this.scene, this.camera);
+    }
   }
 
   handleResize_() {
@@ -1209,8 +1211,6 @@ void main() {
         self.renderController(controller);
       });
     }
-
-    this.orbitcontrols.update();
     this.renderer.render(this.scene, this.camera);
   }
 
