@@ -308,3 +308,5 @@ This project is a conglomeration of a few amazing open source libraries.
 
 ## Support ##
 This work is sponsored by [Brightcove](https://www.brightcove.com), [HapYak](http://corp.hapyak.com/) and [StreamShark](https://streamshark.io)
+
+LINE
